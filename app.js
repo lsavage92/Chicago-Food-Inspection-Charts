@@ -27,10 +27,10 @@ angular.module('foodInspection', [
   $scope.getMonthlyData();
 })
 .controller("RadarCtrl", function ($scope) {
-  $scope.labels =["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"];
+  $scope.labels =["Risk 1 (High)", "Risk 2 (Medium)", "Risk 3 (Low)"];
 
   $scope.data = [
-    [65, 59, 90, 81, 56, 55, 40],
-    [28, 48, 40, 19, 96, 27, 100]
+    [65, 59, 90],
+    [28, 48, 40]
   ];
 });
