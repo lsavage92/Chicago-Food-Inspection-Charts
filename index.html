@@ -8,14 +8,21 @@
   <script src="./bower_components/Chart.js/Chart.js"></script>
   <script src="./bower_components/angular-chart.js/dist/angular-chart.js"></script>
   <link rel="stylesheet" href="./bower_components/angular-chart.js/dist/angular-chart.css">
+  <link rel="stylesheet" href="./style.css">
   <script src="./app.js"></script>
   <script src="./services.js"></script>
   <div ng-controller='LineCtrl'>
-    <h1>Passing vs Failing Inspections in Restaurants (2015)</h1>
+    <h1 class="chartTitle">Passing vs Failing Inspections in Grocery Stores (2015)</h1>
     <canvas width="500" height="100" id="line" class="chart chart-line" chart-data="passFailData"
     chart-labels="labels" chart-legend="true" chart-series="series"
     chart-click="onClick" >
     </canvas>
+  </div>
+  <div ng-controller='RadarCtrl'>
+    <h1 class="chartTitle">Risk Levels of Restaurants vs Grocery Stores (2015)</h1>
+    <canvas width="500" height="100" id="radar" class="chart chart-radar"
+    chart-data="data" chart-labels="labels">
+</canvas>
   </div>
 </canvas>
 </body>
