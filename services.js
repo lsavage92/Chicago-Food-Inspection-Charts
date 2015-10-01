@@ -3,7 +3,7 @@ angular.module('foodInspection.services',[])
 .factory('chicagoDataAPIService', function($http) {
   var chicagoFoodDataAPI = {};
 
-  chicagoFoodDataAPI.getData = function(filter) {
+  chicagoFoodDataAPI.getMonthlyAmount = function(filter) {
     filter = filter || '';
     var monthlyData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     return $http.get('https://data.cityofchicago.org/resource/4ijn-s7e5' + filter)
