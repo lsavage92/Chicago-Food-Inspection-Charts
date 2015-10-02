@@ -45,13 +45,13 @@ angular.module('foodInspection.services',[])
       });
   };
 
+  //returns the amount of establishments with the passed in riskLevel
   chicagoFoodDataAPI.getRisk = function(riskLevel, facilityType){
     riskLevel = this._riskLevels[riskLevel] || this._riskLevels[1];
     facilityType = facilityType || 'Grocery Store'
     var riskAmount = 0;
-    return $http.get('https://data.cityofchicago.org/resource/4ijn-s7e5?$limit=2000&$where=facility_type = \'' + facilityType + '\' risk = \'' + riskLevel + '\' AND inspection_date >= \'2015-01-01\' AND inspection_date <= \'2015-12-31\'')
+    return $http.get('https://data.cityofchicago.org/resource/4ijn-s7e5?$limit=2000&$where=facility_type = \'' + facilityType + '\' AND risk = \'' + riskLevel + '\' AND inspection_date >= \'2015-01-01\' AND inspection_date <= \'2015-12-31\'')
       .then(function(response) {
-        //returns the amount of establishments with the passed in riskLevel
         return response.data.length;
       });
   };

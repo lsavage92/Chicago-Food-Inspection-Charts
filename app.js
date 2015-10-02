@@ -26,11 +26,44 @@ angular.module('foodInspection', [
   //Get data from promises
   $scope.getMonthlyData();
 })
-.controller("RadarCtrl", function ($scope) {
-  $scope.labels =["Risk 1 (High)", "Risk 2 (Medium)", "Risk 3 (Low)"];
+.controller("RadarCtrl", function ($scope, chicagoDataAPIService) {
+  $scope.labels = ["Risk 1 (High)", "Risk 2 (Medium)", "Risk 3 (Low)"];
+  $scope.series = ["Grocery Stores", "Bakeries"];
+  $scope.data = [[0, 0, 0], [0, 0, 0]];
 
-  $scope.data = [
-    [65, 59, 90],
-    [28, 48, 40]
-  ];
+  //Gather risk data for grocery stores and bakeries.
+  $scope.getRiskData = function() {
+    chicagoDataAPIService.getRisk(1, 'Grocery Store')
+      .then(function(riskAmount) {
+        $scope.data[0][0] = riskAmount;
+    });
+
+    chicagoDataAPIService.getRisk(2, 'Grocery Store')
+      .then(function(riskAmount) {
+        $scope.data[0][1] = riskAmount;
+    });
+
+    chicagoDataAPIService.getRisk(3, 'Grocery Store')
+      .then(function(riskAmount) {
+        $scope.data[0][2] = riskAmount;
+    });
+
+    chicagoDataAPIService.getRisk(1, 'Bakery')
+      .then(function(riskAmount) {
+        $scope.data[1][0] = riskAmount;
+    });
+
+    chicagoDataAPIService.getRisk(2, 'Bakery')
+      .then(function(riskAmount) {
+        $scope.data[1][1] = riskAmount;
+    });
+
+    chicagoDataAPIService.getRisk(3, 'Bakery')
+      .then(function(riskAmount) {
+        $scope.data[1][2] = riskAmount;
+    });
+  }
+
+  //update risk data in current scope
+  $scope.getRiskData();
 });
